@@ -38,20 +38,22 @@ class BurgerBuilder extends Component {
     }
 
 
+
     purchaseHandler = () => {
-        this.setState({ purchasing: true })
-       // console.log(this.props.history.push('checkout'));
+        this.setState( { purchasing: true } );
     }
 
     purchaseCancelHandler = () => {
-
-        this.setState({ purchasing: false })
-
+        this.setState( { purchasing: false } );
     }
+
     purchaseContinueHandler = () => {
         this.props.onInitPurchase();
-        this.props.history.push('checkout')
+        
+        this.props.history.push('/checkout');
     }
+
+
 
     render() {
         const disabledInfo = {
@@ -130,6 +132,7 @@ const mapDispatchToProps = dispatch => {
 
         onInitPurchase : () => 
         dispatch(actions.purchaseInit())
+
     }
 }
 

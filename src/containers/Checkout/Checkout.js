@@ -16,10 +16,12 @@ class Checkout extends Component {
 
         const locationPath = this.props.match.path;
         this.props.history.replace(locationPath + '/contact-data')
-    }
-
+        
+    }   
+        
     render() {
-
+   
+        
         let summary = <Redirect to='/' />
 
         if (this.props.ings) {
@@ -52,7 +54,7 @@ class Checkout extends Component {
 const mapStateToProps = state => {
     return {
         ings: state.burgerBuilder.ingredients,
-        purchased : state.order.purchased
+       purchased : state.order.purchased
     }
 }
 
