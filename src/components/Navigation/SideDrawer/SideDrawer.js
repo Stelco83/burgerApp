@@ -19,7 +19,7 @@ if(props.open){
         <Aux>
                <Backdrop show={props.open} clicked={props.closed} />
     
-        <div className={atachedClasses.join(' ')} >
+        <div className={atachedClasses.join(' ')} onClick={props.closed} >
 
             <div className={classes.Logo}>
                 <Logo>LOGO</Logo>
