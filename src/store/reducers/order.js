@@ -4,7 +4,7 @@ import * as actionType from '../actions/actionTypes';
 const initialState = {
     orders: [],
     loading: false,
-    purchased: false
+    purchased: false,
 }
 
 const reducer = (state = initialState, action) => {
@@ -61,6 +61,7 @@ const reducer = (state = initialState, action) => {
                 } ;  
 
             case actionType.FETCH_ORDERS_FAIL:
+            
                 return{
                     ...state,
                      loading : false

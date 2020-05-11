@@ -7,9 +7,10 @@ import withErrorHandler from '../../hoc/whitErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
+
 class Orders extends Component {
     componentDidMount () {
-        this.props.onFetchOrders();
+        this.props.onFetchOrders(this.props.token, this.props.userId);
     }
 
     render () {
@@ -19,11 +20,14 @@ class Orders extends Component {
                 <Order
                     key={order.id}
                     ingredients={order.ingredients}
-                    price={order.price} />
+                    price={order.price}
+                    />
             ) )
         }
+
         return (
             <div>
+     
                 {orders}
             </div>
         );
@@ -33,13 +37,17 @@ class Orders extends Component {
 const mapStateToProps = state => {
     return {
         orders: state.order.orders,
-        loading: state.order.loading
+        loading: state.order.loading,
+        token: state.auth.token,
+        isAuthenticated : state.auth.token !== null,
+        userId : state.auth.userId
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchOrders: () => dispatch( actions.fetchOrders() )
+        onFetchOrders: (token,userId) =>
+         dispatch( actions.fetchOrders(token,userId) )
     };
 };
 

@@ -10,16 +10,9 @@ const INGRIDIENT_PRICE = {
 
 const initialState = {
     ingredients: null,
-    
-    
-    // {
-    //     salad : 0,
-    //     bacon : 0,
-    //     cheese : 0,
-    //     meat : 0
-    // },
     totalPrice: 4,
-    error : false
+    error : false,
+    buliding : false
 };
 
 
@@ -35,7 +28,8 @@ const reduser = (state = initialState, action) =>{
                     [action.ingredientName]: 
                     state.ingredients[action.ingredientName]+ 1
                 },
-                totalPrice: state.totalPrice + INGRIDIENT_PRICE[action.ingredientName]
+                totalPrice: state.totalPrice + INGRIDIENT_PRICE[action.ingredientName],
+                buliding : true
                 
                 
             }
@@ -47,7 +41,8 @@ const reduser = (state = initialState, action) =>{
                     [action.ingredientName]: 
                     state.ingredients[action.ingredientName]- 1
                 },
-                totalPrice: state.totalPrice - INGRIDIENT_PRICE[action.ingredientName]
+                totalPrice: state.totalPrice - INGRIDIENT_PRICE[action.ingredientName],
+                buliding : true
              } 
 
             case actionType.SET_INGREDIENTS:
@@ -58,7 +53,8 @@ const reduser = (state = initialState, action) =>{
                         ...state,
                             ingredients : action.ingredients   ,
                             error : false ,
-                            totalPrice : oldPrice                                          
+                            totalPrice : oldPrice ,
+                            buliding : false                                         
                     }
 
             case actionType.FETCH_INGREDIENT_FAILED:
